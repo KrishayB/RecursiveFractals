@@ -16,7 +16,8 @@ public class FractalTree {
     private static final double INIT_ANGLE_L = 3*Math.PI/4;
 
     // How much the angle should change by (should be between 0 and π)
-    private static final double CHANGE_ANGLE = Math.PI/4;
+    private static final double CHANGE_ANGLE_R = Math.PI/4;
+    private static final double CHANGE_ANGLE_L = Math.PI/4;
 
     // How much the length should change by for each level
     private static final double CHANGE_LENGTH = 0.7;
@@ -72,10 +73,10 @@ public class FractalTree {
             y[1] = vert_shift + rad*Math.sin(angle);
 
             // Draw right branch (subtract CHANGE_ANGLE to move clockwise on the unit circle)
-            drawBranch(Arrays.copyOf(x, 2), Arrays.copyOf(y, 2), angle - CHANGE_ANGLE, n + 1, x[1], y[1], rad*CHANGE_LENGTH, penRad);
+            drawBranch(Arrays.copyOf(x, 2), Arrays.copyOf(y, 2), angle - CHANGE_ANGLE_R, n + 1, x[1], y[1], rad*CHANGE_LENGTH, penRad);
 
             // Draw left branch (add CHANGE_ANGLE to move counterclockwise on the unit circle)
-            drawBranch(Arrays.copyOf(x, 2), Arrays.copyOf(y, 2), angle + CHANGE_ANGLE, n + 1, x[1], y[1], rad*CHANGE_LENGTH, penRad);
+            drawBranch(Arrays.copyOf(x, 2), Arrays.copyOf(y, 2), angle + CHANGE_ANGLE_L, n + 1, x[1], y[1], rad*CHANGE_LENGTH, penRad);
         }
 
     }
