@@ -17,7 +17,7 @@ public class SierpinskiTriangle {
     /** Empty constructor */
     public SierpinskiTriangle() {}
 
-    /** Set up the window to draw. */
+    /** Sets up the window to draw. */
     public static void setUpWindow() {
         StdDraw.setTitle("Recursive Fractal");
         StdDraw.setCanvasSize(WIDTH, HEIGHT);
@@ -31,15 +31,15 @@ public class SierpinskiTriangle {
         double[] y = {HEIGHT/EDGE_FACTOR, HEIGHT - HEIGHT/EDGE_FACTOR, HEIGHT/EDGE_FACTOR};
 
         StdDraw.polygon(x, y);
+
+        // Draw the middle top triangle
         drawTop(Arrays.copyOf(x, 3), Arrays.copyOf(y, 3), ORDER);
 
-        // System.out.println("\nMain top done");
+        // Draw the bottom left triangle
         drawLeft(Arrays.copyOf(x, 3), Arrays.copyOf(y, 3), ORDER);
 
-        // System.out.println("\nMain left done");
+        // Draw the bottom right triangle
         drawRight(Arrays.copyOf(x, 3), Arrays.copyOf(y, 3), ORDER);
-
-        // System.out.println("\nMain right done");
     }
 
     /**
@@ -49,7 +49,6 @@ public class SierpinskiTriangle {
      * @param order     The triangle's level (depth)
      */
     public static void drawTop(double[] x, double[] y, int order) {
-        // System.out.println("Top " + order);
         if (order == 0)
             return;
         else {
@@ -57,7 +56,6 @@ public class SierpinskiTriangle {
             x[2] = (x[1] + x[2])/2;
             y[0] = (y[0] + y[1])/2;
             y[2] = y[0];
-            // System.out.println(order + " Drew top");
             StdDraw.polygon(x, y);
 
             drawTop(Arrays.copyOf(x, 3), Arrays.copyOf(y, 3), order - 1);
@@ -73,14 +71,12 @@ public class SierpinskiTriangle {
      * @param order     The triangle's level (depth)
      */
     public static void drawLeft(double[] x, double[] y, int order) {
-        // System.out.println("Left " + order);
         if (order == 0)
             return;
         else {
             x[2] = x[1];
             x[1] = (x[0] + x[1])/2;
             y[1] = (y[0] + y[1])/2;
-            // System.out.println(order + " Drew left");
             StdDraw.polygon(x, y);
 
             drawTop(Arrays.copyOf(x, 3), Arrays.copyOf(y, 3), order - 1);
@@ -96,14 +92,12 @@ public class SierpinskiTriangle {
      * @param order     The triangle's level (depth)
      */
     public static void drawRight(double[] x, double[] y, int order) {
-        // System.out.println("Right " + order);
         if (order == 0)
             return;
         else {
             x[0] = x[1];
             x[1] = (x[1] + x[2])/2;
             y[1] = (y[0] + y[1])/2;
-            // System.out.println(order + " Drew right");
             StdDraw.polygon(x, y);
 
             drawTop(Arrays.copyOf(x, 3), Arrays.copyOf(y, 3), order - 1);
