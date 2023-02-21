@@ -10,4 +10,5 @@
 2. Choose one of the files (excluding the `StdDraw.java`) to run.
 
 Ex. of running FractalTree when `ORDER = 15`:
+
 ![Example](TreeOrder15.png)
